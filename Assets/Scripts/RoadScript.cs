@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoadScript : MonoBehaviour
 {
-    public float heightOffset = 0.01f;
+    public float heightOffset = 0.1f;
 
     void Start()
     {

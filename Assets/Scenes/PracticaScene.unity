@@ -3330,6 +3330,7 @@ GameObject:
   - component: {fileID: 536368138}
   - component: {fileID: 536368137}
   - component: {fileID: 536368136}
+  - component: {fileID: 536368140}
   m_Layer: 6
   m_Name: road_0001
   m_TagString: Untagged
@@ -30842,6 +30843,19 @@ MonoBehaviour:
   terrainYStart: 0
   terrainHMRows: 0
   terrainHMCols: 0
+--- !u!114 &536368140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536368134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1b989b2a8bca24abbd1f75e7a628a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heightOffset: 0.02
 --- !u!1001 &538836198
 PrefabInstance:
   m_ObjectHideFlags: 0

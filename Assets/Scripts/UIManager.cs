@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
     {
         if (timeScript.GetVueltas() < 1 || timeScript.GetVueltas() == 4)
         {
-            tiempoText.text = "Tiempo: 0s";
+            tiempoText.text = "Tiempo: 00:00";
         }
         else
         {
@@ -51,20 +51,25 @@ public class UIManager : MonoBehaviour
             tiempoActual = Time.time - tiempoInicio;
             tiempoActual = Mathf.Round(tiempoActual * 100f) / 100f;
 
-            tiempoText.text = "Tiempo: " + Mathf.Floor(tiempoActual) + "s";
+            tiempoText.text = "Tiempo: " + FormatTime(tiempoActual);
         }
         velocidadText.text = coche.CarSpeedUI();
+    }
+
+    private string FormatTime(float timeInSeconds)
+    {
+        int minutes = Mathf.FloorToInt(timeInSeconds / 60f);
+        int seconds = Mathf.FloorToInt(timeInSeconds % 60f);
+        return string.Format("{0:D2}:{1:D2}", minutes, seconds); // Devuelve el formato "mm:ss"
     }
 
     public void SetTime(int i)
     {
         if (i < vueltas.Length)
         {
-            vueltas[i].text = tiempoActual + "s";
+            vueltas[i].text = FormatTime(tiempoActual);
             tiempos[i] = tiempoActual;
             vueltas[i].ForceMeshUpdate(); // Forzar actualización del texto en pantalla
-
-            Debug.Log("tiempo vuelta " + vueltas[i].text);
         }
     }
 
@@ -74,7 +79,7 @@ public class UIManager : MonoBehaviour
         {
             tiempoTotal += tiempos[i];
         }
-        vueltas[vueltas.Length - 1].text = tiempoTotal  + "s";
+        vueltas[vueltas.Length - 1].text = FormatTime(tiempoTotal);
         vueltas[vueltas.Length - 1].ForceMeshUpdate();
     }
     public void RestartTimer()
@@ -83,7 +88,7 @@ public class UIManager : MonoBehaviour
     }
     public void ClickSeguir()
     {
-        SceneManager.LoadScene("StartScene");
+        SceneManager.LoadScene("OptionsScene");
     }
 
     public void ActiveScore()
